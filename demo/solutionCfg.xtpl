@@ -1,0 +1,35 @@
+
+{{! footerSection and headerSection you can remove if you don't need }}
+
+{{set ($solution = {
+  "generalConfig": {
+    "regional": "TH",
+    "timeZone": "Asia/Bangkok",
+    "retcodePid": "hyey0hz67v@9508762ae7ce8cf"
+  },
+  "extraConfig": {
+    "flexibleMap": [
+      {
+        "key": "headerSection",
+        "value": "section://i/my/site-nav-content-pc",
+        "valueType": "string"
+      },
+      {
+        "key": "footerSection",
+        "value": "section://i/my/footer-my-phone",
+        "valueType": "string"
+      }
+    ]
+  },
+  "solutionConfig": {
+    "module": "@ali/lzdmod-lazada5",
+    "version": "5.0.42"
+  }
+})}}
+
+
+{{! mock icms environment & reset module type }}
+{{#if (!$icms)}}
+  {{ set($icms = {}) }}
+{{/if}}
+{{ set($icms.__useDefaultSolution = true ) }}

@@ -1,0 +1,44 @@
+
+  {{#if(!$zebra_language_packages)}}{{set($zebra_language_packages={})}}{{/if}}
+  {{set($zebra_language_packages["@ali/lzdmod-smart-banner"]={
+  "en": {
+    "Install Lazada App To get exclusive deals and daily Flash Sale": "Install Lazada App To get exclusive deals and daily Flash Sale",
+    "Shop Now": "Shop Now",
+    "title": "Lazada App",
+    "subTitle": "Register on App to enjoy discount!",
+    "button": "Open"
+  },
+  "id": {
+    "Install Lazada App To get exclusive deals and daily Flash Sale": "Download Aplikasi Lazada untuk mendapatkan promosi menarik dari kami!",
+    "Shop Now": "Beli Sekarang!",
+    "title": "Aplikasi Lazada",
+    "subTitle": "Daftar di aplikasi untuk dapatkan diskon Rp20.000",
+    "button": "Buka"
+  },
+  "ms": {
+    "Install Lazada App To get exclusive deals and daily Flash Sale": "Guna LZVGEN10, jimat 10% utk belian min. RM150. Terhad RM30 & App shj!",
+    "Shop Now": "Beli Sekarang!",
+    "title": "Lazada App",
+    "subTitle": "Register in Lazada App to get discount",
+    "button": "Open"
+  },
+  "th": {
+    "Install Lazada App To get exclusive deals and daily Flash Sale": "ติดตั้งแอพพลิเคชั่นลาซาด้าเพื่อรับข้อเสนอพิเศษเฉพาะคุณเท่านั้น!",
+    "Shop Now": "ร้านค้าตอนนี้!",
+    "title": "Lazada App",
+    "subTitle": "ลงทะเบียนผ่านแอปเพื่อรับส่วนลดสูงสุด 50%",
+    "button": "เปิด"
+  },
+  "vi": {
+    "Install Lazada App To get exclusive deals and daily Flash Sale": "Tải Lazada App để nhận thông tin khuyến mãi độc quyền và Flash Sale mỗi ngày",
+    "Shop Now": "Mua Ngay!",
+    "title": "Ứng dụng Lazada",
+    "subTitle": "Đăng ký trên app Lazada để nhận ngay Freeship giảm giá",
+    "button": "Mở"
+  }
+})}}
+  {{set($zebra_detected_language = $http.dataLanguage || $http.language || 'en')}}
+  {{#if(!$zebra_language_packages["@ali/lzdmod-smart-banner"][$zebra_detected_language])}}
+    {{set($zebra_detected_language = $zebra_detected_language.split('-', 1).join('-'))}}
+  {{/if}}
+  {{$i18n.set($zebra_language_packages["@ali/lzdmod-smart-banner"][$zebra_detected_language])}}

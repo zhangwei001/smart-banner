@@ -1,0 +1,87 @@
+{
+  "name": "@ali/lzdmod-smart-banner",
+  "description": "",
+  "version": "5.4.84",
+  "keywords": [
+    "icms",
+    "lzdmod",
+    "mui5.0"
+  ],
+  "main": "lib/index.js",
+  "group": "@ali",
+  "template": {
+    "type": "mod",
+    "version": "1.1.4"
+  },
+  "feDependencies": {
+    "@ali/mui-zepto": "5.0.x",
+    "@ali/lzdmod-common-info": "5.0.x",
+    "@ali/mui-i18n": "5.0.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:lzdmod/smart-banner.git"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
+  },
+  "author": "lyusi",
+  "designer": "lyusi",
+  "zebra": {
+    "meta-pc": {
+      "bgColor": {
+        "type": "text",
+        "title": "background color",
+        "format": "color"
+      },
+      "bgImage": {
+        "type": "text",
+        "title": "background image",
+        "format": "url"
+      },
+      "size": {
+        "type": "text",
+        "title": "margin top (eg : 10px)",
+        "format": "unit-px"
+      }
+    },
+    "meta": {
+      "size": {
+        "type": "text",
+        "title": "margin top (eg : 10px)",
+        "format": "unit-px"
+      }
+    }
+  },
+  "engines": {
+    "node": ">4.0.0"
+  },
+  "dependencies": {
+    "@ali/lzdmod-common-info": "^5.0.9"
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint src/m/*.js",
+    "prettier": "./node_modules/prettier-eslint-cli/dist/index.js --write \"src/**/*.{js,jsx}\"",
+    "prettier-scss": "./node_modules/prettier/bin/prettier.js --parser scss --write \"src/**/*.scss\""
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "devDependencies": {
+    "@ali/eslint-plugin-comments": "^1.0.0",
+    "@ali/eslint-plugin-nuke": "^1.0.x",
+    "@ali/eslint-plugin-tbfed": "^1.1.x",
+    "@ali/stylelint-config-standard": "^1.0.6",
+    "babel-eslint": "^8.1.2",
+    "eslint": "^4.1.1",
+    "eslint-config-ali": "^2.0.0",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-react": "^7.1.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "1.9.2",
+    "prettier-eslint": "^8.7.0",
+    "prettier-eslint-cli": "^4.7.0",
+    "stylelint": "^8.2.0",
+    "stylelint-config-prettier": "^2.0.0"
+  }
+}

@@ -1,0 +1,10 @@
+{{! 加载对应的 js 和 css 资源 }}
+{{ require ("@ali/lzdmod-smart-banner/pc/index.css") }}
+
+{{include("mod://@ali/lzdmod-smart-banner/i18n.xtpl")}}
+
+{{ include("mod://@ali/lzdmod-smart-banner/createStyle.xtpl") }}
+
+<div class="smart-banner" data-mod-name="@ali/lzdmod-smart-banner/pc/index" {{#if ($style)}}style="{{$style}}"{{/if}}>
+  {{$i18n("hello, my name is %s",moduleConfig.name)}} I'm a pc module.
+</div>

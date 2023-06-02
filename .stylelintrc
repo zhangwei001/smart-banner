@@ -1,0 +1,6 @@
+{
+	"extends": ["@ali/stylelint-config-standard", "stylelint-config-prettier"],
+	"rules": {
+		"declaration-block-no-duplicate-properties": null
+	}
+}

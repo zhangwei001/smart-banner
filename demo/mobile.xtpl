@@ -1,0 +1,48 @@
+{{! 可以 extend 不同的 solution }}
+{{ include('./solutionCfg.xtpl') }}
+
+{{ set ($system.env = 'debug') }}
+
+
+{{#if ($http.url.query.wh_rax)}}
+
+{{include('./weexTheme.xtpl')}}
+{{include('./weexConfig.xtpl')}}
+
+{{else}}
+<script>
+  window.g_config = window.g_config || {};
+  window.g_config.language = window.g_config.language || 'sg';
+  window.SMART_BANNER_POS = "top";
+  window.lzdGlobalConfigOption = {
+    needSmartBanner: true
+  }
+  window.pdpTrackingData = {
+    page: {
+      xParams: "_p_typ=pdp&_p_ispdp=1&_p_item=PA763ELAANWV8TANTH-48093890&_p_prod=124873955&_p_sku=130859308&_p_slr=6712"
+    }
+  }
+</script>
+{{ include ("./theme.xtpl",device='') }}
+{{/if}}
+
+{{ extend("solution://lzdsolution-config-solution/index.xtpl")}}
+
+<style>
+html {
+  font-size: 100px;
+}
+</style>
+
+{{#block("body")}}
+
+
+{{ set (wh_language = 'en')}}
+
+{{! set ($solution.extraConfig.isHomepage = 'true')}}
+
+{{ set ($icms.regionID = 'sg') }}
+
+
+{{ include ("mod://@ali/lzdmod-smart-banner/index.xtpl", {wh_site: "sg" ,wh_position:"bottom", wh_language:wh_language, wh_channel: 'pdp'}) }}
+{{/block}}

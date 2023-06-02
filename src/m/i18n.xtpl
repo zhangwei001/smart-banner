@@ -1,0 +1,7 @@
+{{ set(curLanguage = wh_language)}}
+
+{{ include ('../i18n.xtpl') }}
+{{!reset from context, no from icms }}
+{{#if(curLanguage)}}
+  {{$i18n.set($zebra_language_packages["@ali/lzdmod-smart-banner"][curLanguage])}}
+{{/if}}

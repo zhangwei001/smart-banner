@@ -1,0 +1,190 @@
+$titleColor: #757575;
+$shopAllColor: #1a9cb7;
+$backgroundColor: #e7e8ec;
+$segmentColor: #a90b26;
+$border-color-base: #dadada;
+$priceColor: #f57224;
+$promoColor: #9e9e9e;
+$starColorDisable: #dadada;
+$starColorEnable: #faca51;
+
+$zIndexInfinity: 99999999;
+$zIndex1: 1;
+$zIndex2: 10;
+$zIndex3: 100;
+$zIndex4: 1000;
+$zIndex5: 10000;
+
+@function calc-rem($pxList...) {
+  $remList: ();
+
+  @each $px in $pxList {
+    $rem: $px;
+
+    @if $px !=0 {
+      $rem: #{$px/100}rem;
+    }
+    $remList: append($remList, $rem);
+  }
+
+  @return $remList;
+}
+
+@mixin scale-hairline-common($color, $top, $right, $bottom, $left) {
+  content: '';
+  position: absolute;
+  background-color: $color;
+  display: block;
+  z-index: 1;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin hairline($position, $color: $border-color-base) {
+  position: relative;
+
+  @if $position == 'top' {
+    border-top: 1px solid $color;
+
+    @media (min-resolution: 2dppx) {
+      border-top: none;
+
+      &:before {
+        @include scale-hairline-common($color, 0, auto, auto, 0);
+
+        width: 100%;
+        height: 1px;
+        transform-origin: 50% 50%;
+        transform: scaleY(0.5);
+
+        @media (min-resolution: 3dppx) {
+          transform: scaleY(0.33);
+        }
+      }
+    }
+  } @else if $position == 'right' {
+    border-right: 1px solid $color;
+
+    @media (min-resolution: 2dppx) {
+      border-right: none;
+
+      &:after {
+        @include scale-hairline-common($color, 0, 0, auto, auto);
+
+        width: 1px;
+        height: 100%;
+        background: $color;
+        transform-origin: 100% 50%;
+        transform: scaleX(0.5);
+
+        @media (min-resolution: 3dppx) {
+          transform: scaleX(0.33);
+        }
+      }
+    }
+  } @else if $position == 'bottom' {
+    border-bottom: 1px solid $color;
+
+    @media (min-resolution: 2dppx) {
+      border-bottom: none;
+
+      &:after {
+        @include scale-hairline-common($color, auto, auto, 0, 0);
+
+        width: 100%;
+        height: 1px;
+        transform-origin: 50% 100%;
+        transform: scaleY(0.5);
+
+        @media (min-resolution: 3dppx) {
+          transform: scaleY(0.33);
+        }
+      }
+    }
+  } @else if $position == 'left' {
+    border-left: 1px solid $color;
+
+    @media (min-resolution: 2dppx) {
+      border-left: none;
+
+      &:before {
+        @include scale-hairline-common($color, 0, auto, auto, 0);
+
+        width: 1px;
+        height: 100%;
+        transform-origin: 100% 50%;
+        transform: scaleX(0.5);
+
+        @media (min-resolution: 3dppx) {
+          transform: scaleX(0.33);
+        }
+      }
+    }
+  }
+}
+
+@mixin hairline-radius($color: $border-color-base, $radius: 0) {
+  border: 1px solid $color;
+  border-radius: $radius;
+
+  html:not([data-scale]) & {
+    @media (min-resolution: 2dppx) {
+      position: relative;
+      border: none;
+      transform: translateZ(0);
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200%;
+        height: 200%;
+        border: 1px solid $color;
+        border-radius: $radius *2;
+        transform-origin: 0 0;
+        transform: scale(0.5);
+        box-sizing: border-box;
+        pointer-events: none;
+        z-index: -1;
+
+        // @media (min-resolution: 3dppx) {
+        //   width: 300%;
+        //   height: 300%;
+        //   border-radius: @radius * 3;
+        //   transform: scale(0.33);
+        // }
+      }
+    }
+  }
+}
+
+@mixin hairline-remove($position) {
+  @if $position == 'top' {
+    border-top: none;
+
+    &:before {
+      display: none !important;
+    }
+  } @else if $position == 'right' {
+    border-right: none;
+
+    &:after {
+      display: none !important;
+    }
+  } @else if $position == 'bottom' {
+    border-bottom: none;
+
+    &:after {
+      display: none !important;
+    }
+  } @else if $position == 'left' {
+    border-left: none;
+
+    &:before {
+      display: none !important;
+    }
+  }
+}

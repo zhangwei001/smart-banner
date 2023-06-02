@@ -1,0 +1,9 @@
+{
+    "phabricator.uri": "https://aone.alibaba-inc.com/",
+    "history.immutable": true,
+    "load": [
+        "arcanist/extensions/akdiff-dingtalk-robot"
+    ],
+    "dingToken": "1e2422af3588866e8ba0940c3a3f3270a99effa5bb6a389661b4b459f3848574",
+    "arcanist_configuration": "DingTalkRobot"
+}

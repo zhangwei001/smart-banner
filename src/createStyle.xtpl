@@ -1,0 +1,13 @@
+
+{{#if ($themeConfig)}}
+  {{set ($style = "")}}
+  {{#if ($themeConfig.bgColor)}}
+    {{set ($style = "background-color:" + $themeConfig.bgColor +";")}}
+  {{/if}}
+  {{#if ($themeConfig.bgImg)}}
+    {{set ($style = $style + "background-image: url(" + $themeConfig.bgImg + ");") }}
+  {{/if}}
+  {{#if (themeConfig.marginTop)}}
+    {{set ($style = $style + "margin-top:" + $themeConfig.marginTop.replace('px', '') + "px;") }}
+  {{/if}}
+{{/if}}

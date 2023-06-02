@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "title": "schema for mock data",
+  "properties": {
+    "moduleConfig": {
+      "type": "object",
+      "title": "module config",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "module name"
+        }
+      }
+    },
+    "$themeConfig": {
+      "type": "object",
+      "title": "theme setting",
+      "properties": {
+        "bgColor": {
+          "type": "string",
+          "title": "module background color",
+          "x-format": "@color()"
+        },
+        "bgImg": {
+          "type": "string",
+          "title": "module background image",
+          "x-format": "@image()"
+        },
+        "marginTop": {
+          "type": "string",
+          "description": "10px",
+          "title": "module margin top"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{{ require ("@ali/lzdmod-smart-banner/m/index.css") }}
+{{ require ("@ali/lzdmod-act-style/index.css") }}
+{{ require ("@ali/lzdmod-smart-banner/m/banner.js") }}
+{{set (mockBrandLogo = "//lzd-img-global.slatic.net/g/tps/tfs/TB16vOlfJfJ8KJjy0FeXXXKEXXa-619-619.png" )}}
+{{include("mod://@ali/lzdmod-smart-banner/m/banner.xtpl", {wh_site:wh_site, wh_position:wh_position, wh_language:wh_language, wh_channel: wh_channel})}}

@@ -1,0 +1,10 @@
+{
+  "moduleConfig": {
+    "name": "smart-banner"
+  },
+  "$themeConfig": {
+    "bgColor": "#ff0000",
+    "bgImg": "//img.alicdn.com/tfs/TB1E8.uesLJ8KJjy0FnXXcFDpXa-898-493.jpg",
+    "marginTop": "10px"
+  }
+}

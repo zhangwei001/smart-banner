@@ -1,0 +1,58 @@
+{{set (mockBrandLogo = "//lzd-img-global.slatic.net/g/tps/tfs/TB16vOlfJfJ8KJjy0FeXXXKEXXa-619-619.png_150x150.jpg" )}}
+
+{{include("./i18n.xtpl")}}
+
+{{#if((wh_channel !== 'default' && wh_channel))}}
+  {{ set(channel = wh_channel)}}
+{{elseif ($solution.extraConfig.isHomepage + '' === 'true')}}
+  {{ set(channel = 'hp')}}
+{{elseif ($solution.extraConfig.isCampaignPage + '' === 'true')}}
+  {{ set(channel = 'campaign')}}
+{{elseif ($solution.extraConfig.isStoreStreetPage + '' === 'true')}}
+  {{ set(channel = 'storestreet')}}
+{{/if}}
+
+{{set (fragmentUrl = "fragment://i/" + wh_site + "/smartbanner?wh_language=" + wh_language + "&wh_channel=" + $utils._4.toLower(channel))}}
+
+{{include(fragmentUrl)}}
+
+<script>
+  window.sBannerConfig = {};
+  window.sBannerConfig.detector = {{{$utils.JSON.stringify($http.detector)}}};
+  window.sBannerConfig.wh_site = "{{{$utils._4.toLower(wh_site)}}}" || "sg";
+  window.sBannerConfig.wh_language = "{{{$utils._4.toLower(wh_language)}}}" || "en";
+  window.sBannerConfig.wh_position = window.SMART_BANNER_POS || "{{{$utils._4.toLower(wh_position)}}}" || "top";
+  window.sBannerConfig.display = window.lzdGlobalConfigOption ? window.lzdGlobalConfigOption.needSmartBanner : false;
+  window.sBannerConfig.wh_channel = "{{$utils._4.toLower(channel)}}" || "";
+</script>
+<script src="//laz-g-cdn.alicdn.com/lzdfe/lzd-call-app/0.2.0/main.iife.js"></script>
+<div
+  class="smart-banner"
+  id="J_Banner"
+  style=""
+>
+  <div class="smart-banner-close" id="J_SMBColose">
+  </div>
+  <div class="smart-banner-button" id="J_SmartButton">
+  </div>
+</div>
+
+{{! new smart banner only display when page scroll down to banner disappears }}
+{{! 新的 Smart Banner 与旧的共存，仅当页面滚动至旧的 SMB 消失时，新的 SMB 才出现（由对应的业务方来控制） }}
+{{! 目前第一版只在 pdp 上出现 }}
+{{! id 叫 J_Smart_Banner_Bottom 是因为之前的需求就是要放在底部的，但是 pdp 不同意，最后还是改为放在顶部，id 名没有跟着一起改过来了（抱歉 T T） }}
+<div
+  id="J_Smart_Banner_Bottom"
+  class="smart-banner-bottom display-none"
+>
+  <div class="smart-banner-bottom-logo"></div>
+  <div class="smart-banner-bottom-info">
+    <div id="J_SMB_Title" class="title">{{$i18n("title")}}</div>
+    <div id="J_SMB_SubTitle" class="sub-title">{{$i18n("subTitle")}}</div>
+  </div>
+  <div>
+    <div id="J_SMB_Button" class="button">
+      {{$i18n("button")}}
+    </div>
+  </div>
+</div>

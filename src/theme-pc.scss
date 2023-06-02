@@ -1,0 +1,20 @@
+//模块背景颜色
+$bgColor: false;
+
+//模块背景图片
+$bgImage: false;
+
+//模块间默认间隙
+$size: '';
+
+.smart-banner {
+  @if not ($bgColor == false) {
+    background-color: $bgColor;
+  }
+  @if not ($bgImage == false) {
+    background-image: url($bgImage);
+  }
+  @if not ($size == false) {
+    margin-top: $size;
+  }
+}
